@@ -2,9 +2,12 @@
 [org 0x7c00]
 
 %include "boot/disk.asm"
+%include "boot/kernel_entry.asm"
 
 KERNEL_OFFSET equ 0x1000 ; The kernel will be loaded here
 call load_kernel
+
+call prepare_kernel_entry; Jump to 32-bit protected mode.
 
 load_kernel:
 	mov bx, KERNEL_OFFSET

@@ -17,6 +17,7 @@ miniatureOS is a toy OS project that has been started get familiar with parctice
      .
     ├── boot              # Contains files of booting the OS.
     ├── kernel            # Contains code for the kernel.
+    ├── drivers            # Contains code for the kernel.
     ├── LICENSE
     └── README.md 
     

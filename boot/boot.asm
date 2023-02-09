@@ -1,14 +1,15 @@
 ;offset because The BIOS loads this code from the first sector of the hard disk into memory at physical address 0x7c00
 [org 0x7c00]
 
-%include "boot/disk.asm"
-%include "boot/kernel_entry.asm"
-
 KERNEL_OFFSET equ 0x1000 ; The kernel will be loaded here
 call load_kernel
-
 call prepare_kernel_entry; Jump to 32-bit protected mode.
 
+%include "boot/disk.asm"
+%include "boot/kernel_entry.asm"
+%include "boot/gdt.asm"
+
+[bits 16]
 load_kernel:
 	mov bx, KERNEL_OFFSET
     mov dh, 16 ; number of sectors to load. TODO: find a better approach.

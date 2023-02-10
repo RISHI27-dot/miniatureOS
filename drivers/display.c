@@ -77,6 +77,22 @@ int print_char(char c, int col, int row, char attr) {
         vidmem[offset+1] = attr;
         offset += 2;
     }
+    
+	/* If the current offset is out of the screen size, scroll*/
+    if (offset >= MAX_ROWS * MAX_COLS * 2) {
+        int i;
+        for (i = 1; i < MAX_ROWS; i++) 
+            kmemcpy(get_offset(0, i) + VIDEO_ADDRESS,
+                        get_offset(0, i-1) + VIDEO_ADDRESS,
+                        MAX_COLS * 2);
+
+        /* Blank last line */
+        char *last_line = get_offset(0, MAX_ROWS-1) + VIDEO_ADDRESS;
+        for (i = 0; i < MAX_COLS * 2; i++) last_line[i] = 0;
+		/* Set offset to the start of blank line */
+        offset -= 2 * MAX_COLS;
+    }
+
     set_cursor_offset(offset);
     return offset;
 }

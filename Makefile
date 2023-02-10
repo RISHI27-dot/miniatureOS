@@ -1,5 +1,5 @@
-C_SOURCES = $(wildcard kernel/*.c)
-HEADERS = $(wildcard kernel/*.h)
+C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
+HEADERS = $(wildcard kernel/*.h drivers/*.h)
 # This replaces .c files to .o in C_SOURCES.
 OBJ = ${C_SOURCES:.c=.o}
 
@@ -43,5 +43,5 @@ debug: miniatureOS-image.bin kernel.elf
 
 clean:
 	rm -rf *.bin *.dis *.o miniatureOS-image.bin *.elf
-	rm -rf kernel/*.o boot/*.bin boot/*.o
+	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o
 

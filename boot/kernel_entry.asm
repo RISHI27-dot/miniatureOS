@@ -1,6 +1,4 @@
 [bits 16]
-%include "boot/gdt.asm"
-
 prepare_kernel_entry:
 	;TODO Output on the screen that we are going to enter kernel code.
 	;	  Printing needs to be done using BIOS interrupts as we are still

@@ -1,6 +1,8 @@
 // Main file for the kernel.
+#include "display_logo.h"
 
 void kernel_main()
 {
-	//Do something.
+	display_logo();
+	print_hr();
 }

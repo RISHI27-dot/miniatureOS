@@ -1,7 +1,7 @@
-C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
-HEADERS = $(wildcard kernel/*.h drivers/*.h)
+C_SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c)
+HEADERS = $(wildcard kernel/*.h drivers/*.h cpu/*.h)
 # This replaces .c files to .o in C_SOURCES.
-OBJ = ${C_SOURCES:.c=.o}
+OBJ = ${C_SOURCES:.c=.o cpu/interrupt.o}
 
 # Set this so that the corsscompiler is discovered.
 CC = /usr/local/i386elfgcc/bin/i386-elf-gcc
@@ -43,5 +43,5 @@ debug: miniatureOS-image.bin kernel.elf
 
 clean:
 	rm -rf *.bin *.dis *.o miniatureOS-image.bin *.elf
-	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o
+	rm -rf kernel/*.o boot/*.bin drivers/*.o cpu/*.o boot/*.o
 

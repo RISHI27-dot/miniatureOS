@@ -120,7 +120,7 @@ make debug
 ## Tracker
 - [x] Bootloader.
 - [ ] Printers.
-- [ ] Interupt handling.
+- [ ] Interrupt handling.
 - [ ] Shell.
 - [ ] Memory Allocation.
 - [ ] Memory management.

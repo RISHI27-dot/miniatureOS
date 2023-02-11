@@ -1,3 +1,6 @@
+#ifndef DISPLAY_H
+#define DISPLAY_H
+
 #define VIDEO_ADDRESS 0xb8000 // Video memory resides at this address.
 #define MAX_ROWS 25
 #define MAX_COLS 80
@@ -12,3 +15,5 @@
 void clear_screen();
 void kprint_at(char *message, int col, int row);
 void kprint(char *message);
+
+#endif

@@ -2,6 +2,24 @@
 #define ISR_H
 
 #include <stdint.h>
+
+#define IRQ0 32
+#define IRQ1 33
+#define IRQ2 34
+#define IRQ3 35
+#define IRQ4 36
+#define IRQ5 37
+#define IRQ6 38
+#define IRQ7 39
+#define IRQ8 40
+#define IRQ9 41
+#define IRQ10 42
+#define IRQ11 43
+#define IRQ12 44
+#define IRQ13 45
+#define IRQ14 46
+#define IRQ15 47
+
 /* ISRs reserved for CPU exceptions */
 extern void isr0();
 extern void isr1();
@@ -36,6 +54,24 @@ extern void isr29();
 extern void isr30();
 extern void isr31();
 
+/* IRQs */
+extern void irq0();
+extern void irq1();
+extern void irq2();
+extern void irq3();
+extern void irq4();
+extern void irq5();
+extern void irq6();
+extern void irq7();
+extern void irq8();
+extern void irq9();
+extern void irq10();
+extern void irq11();
+extern void irq12();
+extern void irq13();
+extern void irq14();
+extern void irq15();
+
 typedef struct {
   uint32_t ds;
   uint32_t edi, esi, edbp, esp, ebx, edx, ecx, eax;
@@ -44,6 +80,13 @@ typedef struct {
 } registers_t;
 
 void install_isr();
-void isr_handler(registers_t r);
+void install_irq();
+void isr_handler(registers_t *r);
+
+/* function pointer declaration to and interrupt service routine */
+/* typedef is aliasing void (*)(registers_t *) to ist_t to improve readability */
+typedef void (*isr_t)(registers_t *);
+
+void register_interrupt_handler(uint8_t n, isr_t handler);
 
 #endif

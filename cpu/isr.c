@@ -3,6 +3,9 @@
 #include "../drivers/display.h"
 #include "../kernel/utils.h"
 
+/* Array of funciton pointer pointint to isr in the interrupt.asm file */
+isr_t interrupt_handlers[256];
+
 void install_isr() {
 	initialize_idt_gate(0, (uint32_t)isr0);
     initialize_idt_gate(1, (uint32_t)isr1);
@@ -36,7 +39,25 @@ void install_isr() {
     initialize_idt_gate(29, (uint32_t)isr29);
     initialize_idt_gate(30, (uint32_t)isr30);
     initialize_idt_gate(31, (uint32_t)isr31);
-  
+
+	/* IRQs */
+    initialize_idt_gate(32, (uint32_t)irq0);
+    initialize_idt_gate(33, (uint32_t)irq1);
+    initialize_idt_gate(34, (uint32_t)irq2);
+    initialize_idt_gate(35, (uint32_t)irq3);
+    initialize_idt_gate(36, (uint32_t)irq4);
+    initialize_idt_gate(37, (uint32_t)irq5);
+    initialize_idt_gate(38, (uint32_t)irq6);
+    initialize_idt_gate(39, (uint32_t)irq7);
+    initialize_idt_gate(40, (uint32_t)irq8);
+    initialize_idt_gate(41, (uint32_t)irq9);
+    initialize_idt_gate(42, (uint32_t)irq10);
+    initialize_idt_gate(43, (uint32_t)irq11);
+    initialize_idt_gate(44, (uint32_t)irq12);
+    initialize_idt_gate(45, (uint32_t)irq13);
+    initialize_idt_gate(46, (uint32_t)irq14);
+    initialize_idt_gate(47, (uint32_t)irq15);
+	
     initialize_idt();
 }
 
@@ -78,12 +99,32 @@ char *exception_messages[] = {
     "Reserved"
 };
 
-void isr_handler(registers_t r) {
+void isr_handler(registers_t *r) {
     kprint("received interrupt: ");
     char s[3];
-    int_to_ascii(r.int_no, s);
+    int_to_ascii(r->int_no, s);
     kprint(s);
     kprint("\n");
-    kprint(exception_messages[r.int_no]);
+	char *str = exception_messages[r->int_no];
+    kprint(str);
     kprint("\n");
 }
+
+void register_interrupt_handler(uint8_t n, isr_t handler) {
+    interrupt_handlers[n] = handler;
+}
+
+void irq_handler(registers_t *r) {
+    /* Handle the interrupt in a more modular way */
+    if (interrupt_handlers[r->int_no] != 0) {
+        isr_t handler = interrupt_handlers[r->int_no];
+        handler(r);
+    }
+	char s[3];
+	kprint("received interupt: ");
+	int_to_ascii(r->int_no,s);
+	kprint(s);
+	kprint("\n");
+    kprint(exception_messages[r->int_no]);
+}
+

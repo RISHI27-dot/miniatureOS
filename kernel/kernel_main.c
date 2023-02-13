@@ -6,11 +6,14 @@
 
 void kernel_main()
 {
-	display_logo();
-	print_hr();
+	// display_logo();
+	// print_hr();
 
 	//To test interupts
 	install_isr();
     __asm__ __volatile__("int $2");
     __asm__ __volatile__("int $3");
+    __asm__ __volatile__("int $6");
+    __asm__ __volatile__("int $35");
+
 }

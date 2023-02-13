@@ -4,6 +4,7 @@
 #include "../cpu/isr.h"
 #include "../cpu/idt.h"
 #include "../cpu/timer.h"
+#include "../drivers/keyboard.h"
 
 void kernel_main()
 {
@@ -16,5 +17,6 @@ void kernel_main()
 	__asm__ __volatile__("int $3");
 
 	__asm__ __volatile__("sti");
-	init_timer(50);
+	// init_timer(50);
+	init_keyboard();
 }

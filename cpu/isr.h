@@ -80,7 +80,6 @@ typedef struct {
 } registers_t;
 
 void install_isr();
-void install_irq();
 void isr_handler(registers_t *r);
 
 /* function pointer declaration to and interrupt service routine */

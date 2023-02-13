@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "../cpu/isr.h"
 #include "../cpu/idt.h"
+#include "../cpu/timer.h"
 
 void kernel_main()
 {
@@ -13,7 +14,7 @@ void kernel_main()
 	install_isr();
     __asm__ __volatile__("int $2");
     __asm__ __volatile__("int $3");
-    __asm__ __volatile__("int $6");
-    __asm__ __volatile__("int $35");
 
+    __asm__ __volatile__("sti");
+	init_timer(50);
 }

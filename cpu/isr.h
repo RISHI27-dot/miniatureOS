@@ -73,10 +73,10 @@ extern void irq14();
 extern void irq15();
 
 typedef struct {
-  uint32_t ds;
-  uint32_t edi, esi, edbp, esp, ebx, edx, ecx, eax;
-  uint32_t int_no, err_code;
-  uint32_t eip, cs, eflags, useresp, ss;
+	uint32_t ds;
+	uint32_t edi, esi, edbp, esp, ebx, edx, ecx, eax;
+	uint32_t int_no, err_code;
+	uint32_t eip, cs, eflags, useresp, ss;
 } registers_t;
 
 void install_isr();

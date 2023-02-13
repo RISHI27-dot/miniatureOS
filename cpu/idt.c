@@ -11,9 +11,9 @@ void initialize_idt_gate(int n, uint32_t handler)
 
 void initialize_idt()
 {
-	idt_reg.base = (uint32_t) &idt;
+	idt_reg.base = (uint32_t)&idt;
 	idt_reg.limit = IDT_ENTRIES * sizeof(idt_gate_t) - 1;
-	
+
 	/* load the idt */
-	__asm__ __volatile__("lidtl (%0)" : : "r" (&idt_reg));
+	__asm__ __volatile__("lidtl (%0)" : : "r"(&idt_reg));
 }

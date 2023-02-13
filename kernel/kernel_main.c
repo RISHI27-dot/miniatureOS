@@ -12,9 +12,9 @@ void kernel_main()
 
 	//To test interupts
 	install_isr();
-    __asm__ __volatile__("int $2");
-    __asm__ __volatile__("int $3");
+	__asm__ __volatile__("int $2");
+	__asm__ __volatile__("int $3");
 
-    __asm__ __volatile__("sti");
+	__asm__ __volatile__("sti");
 	init_timer(50);
 }

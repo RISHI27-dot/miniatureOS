@@ -12,7 +12,7 @@ call prepare_kernel_entry; Jump to 32-bit protected mode.
 [bits 16]
 load_kernel:
 	mov bx, KERNEL_OFFSET
-    mov dh, 16 ; number of sectors to load. TODO: find a better approach.
+    mov dh, 31 ; number of sectors to load. TODO: find a better approach.
     mov dl, [BOOT_DRIVE]
     call load_from_disk ; load from the disk
     ret

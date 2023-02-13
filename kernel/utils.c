@@ -54,3 +54,25 @@ int strlen(char s[])
 		++i;
 	return i;
 }
+
+void do_backspace(char *s)
+{
+	int len = strlen(s);
+	s[len - 1] = '\0';
+}
+
+void append_string(char *orignal, char *to_append)
+{
+	int len_orignal = strlen(orignal);
+	int len_to_append = strlen(len_to_append);
+	for (int i = 0; i < len_to_append + 1; i++) {
+		orignal[len_orignal + i] = to_append[i];
+	}
+}
+
+void append(char *str, char c)
+{
+	int len = strlen(str);
+	str[len + 1] = c;
+	str[len + 2] = '\0';
+}

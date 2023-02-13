@@ -1,7 +1,10 @@
 #include "keyboard.h"
 #include "ports.h"
 #include "../cpu/isr.h"
+#include "../drivers/keyboard.h"
 #include "display.h"
+
+char buffer[256];
 
 static void keyboard_callback(registers_t regs)
 {
@@ -60,7 +63,7 @@ void print_letter(uint8_t scancode)
 		kprint("+");
 		break;
 	case 0x0E:
-		kprint("Backspace");
+		kprint_backspace();
 		break;
 	case 0x0F:
 		kprint("Tab");

@@ -55,7 +55,7 @@ int strlen(char s[])
 	return i;
 }
 
-void do_backspace(char *s)
+void backspace(char *s)
 {
 	int len = strlen(s);
 	s[len - 1] = '\0';
@@ -70,9 +70,19 @@ void append_string(char *orignal, char *to_append)
 	}
 }
 
-void append(char *str, char c)
+void append(char s[], char c)
 {
-	int len = strlen(str);
-	str[len + 1] = c;
-	str[len + 2] = '\0';
+	int len = strlen(s);
+	s[len] = c;
+	s[len + 1] = '\0';
+}
+
+int strcmp(char s1[], char s2[])
+{
+	int i;
+	for (i = 0; s1[i] == s2[i]; i++) {
+		if (s1[i] == '\0')
+			return 0;
+	}
+	return s1[i] - s2[i];
 }

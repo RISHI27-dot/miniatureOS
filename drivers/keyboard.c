@@ -1,9 +1,9 @@
 #include "keyboard.h"
-#include "../drivers/ports.h"
+#include "../cpu/ports.h"
 #include "../cpu/isr.h"
 #include "display.h"
-#include "../kernel/kernel.h"
-#include "../kernel/utils.h"
+#include "../kernel/kernel_main.h"
+#include "../libc/function.h"
 #include <stdint.h>
 
 #define BACKSPACE 0x0E

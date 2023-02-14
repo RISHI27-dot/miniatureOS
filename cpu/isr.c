@@ -1,7 +1,7 @@
 #include "isr.h"
 #include "idt.h"
 #include "../drivers/display.h"
-#include "../kernel/utils.h"
+#include "../libc/string.h"
 
 /* Array of funciton pointer pointint to isr in the interrupt.asm file */
 isr_t interrupt_handlers[256];

@@ -1,6 +1,7 @@
 // Main file for the kernel.
 #include "display_logo.h"
-#include "utils.h"
+#include "../libc/function.h"
+#include "../libc/string.h"
 #include "../cpu/isr.h"
 #include "../cpu/idt.h"
 #include "../cpu/timer.h"

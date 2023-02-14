@@ -54,3 +54,35 @@ int strlen(char s[])
 		++i;
 	return i;
 }
+
+void backspace(char *s)
+{
+	int len = strlen(s);
+	s[len - 1] = '\0';
+}
+
+void append_string(char *orignal, char *to_append)
+{
+	int len_orignal = strlen(orignal);
+	int len_to_append = strlen(len_to_append);
+	for (int i = 0; i < len_to_append + 1; i++) {
+		orignal[len_orignal + i] = to_append[i];
+	}
+}
+
+void append(char s[], char c)
+{
+	int len = strlen(s);
+	s[len] = c;
+	s[len + 1] = '\0';
+}
+
+int strcmp(char s1[], char s2[])
+{
+	int i;
+	for (i = 0; s1[i] == s2[i]; i++) {
+		if (s1[i] == '\0')
+			return 0;
+	}
+	return s1[i] - s2[i];
+}

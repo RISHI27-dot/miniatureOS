@@ -4,6 +4,7 @@
 #include "../cpu/isr.h"
 #include "../cpu/idt.h"
 #include "../cpu/timer.h"
+#include "../drivers/keyboard.h"
 
 void kernel_main()
 {
@@ -16,5 +17,17 @@ void kernel_main()
 	__asm__ __volatile__("int $3");
 
 	__asm__ __volatile__("sti");
-	init_timer(50);
+	// init_timer(50);
+	init_keyboard();
+}
+
+void user_input(char *input)
+{
+	if (strcmp(input, "END") == 0) {
+		kprint("Stopping the CPU. Bye!\n");
+		asm volatile("hlt");
+	}
+	kprint("You said: ");
+	kprint(input);
+	kprint("\n> ");
 }

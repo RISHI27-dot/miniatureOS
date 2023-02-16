@@ -14,12 +14,18 @@ A toy operating system for exploring and learning about OS development.
 miniatureOS is a toy OS project that has been started get familiar with parctices in OS development
 
 ### File Structure
-     .
+
     ├── boot              # Contains files of booting the OS.
+    ├── cpu               # Contains CPU specific code.
+    ├── drivers           # Drivers.
     ├── kernel            # Contains code for the kernel.
-    ├── drivers            # Contains code for the kernel.
-    ├── LICENSE
-    └── README.md 
+    ├── libc              # Contains C utility functions.
+    ├── Makefile          
+    ├── README.md
+    ├── .clang-format
+    ├── format.sh         # For code formatting.
+    └── LICENSE
+    
     
 ## Prerequisites and Installation.
 

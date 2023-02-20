@@ -31,3 +31,49 @@ uint32_t kmalloc(uint32_t size, int align, uint32_t *phys_addr)
 	free_mem_addr += size;
 	return ret;
 }
+
+void *kmemchr(uint8_t *source, char ch, int n)
+{
+	int i;int count = 0;
+	for (i = 0; i < n; i++) {
+		if (atoi(*(source + i)) == (int)ch)
+		{
+			count++;
+		}
+	}
+	if (count != n)
+	{
+		return NULL;
+	}
+}
+
+void kmemmove(uint8_t *source, uint8_t *dest, int pos, int nbytes)
+{
+	int i;
+	for (i = pos; i < pos+ nbytes; i++) {
+		*(dest + i) = *(source + i);
+	}
+}
+
+int kmemcmp(uint8_t *str1, uint8_t *str2, int nbytes)
+{
+	int i;int count = 0;
+	for (i = 0; i < nbytes; i++) {
+		if (*(str1 + i) == *(str2 + i))
+		{
+			count++;
+		}
+		if (*(str1 + i) < *(str2 + i))
+		{
+			return -1;
+		}
+		if (*(str1 + i) > *(str2 + i))
+		{
+			return 	1;
+		}
+	}
+	if (count == nbytes)
+	{
+		return 0;
+	}
+}

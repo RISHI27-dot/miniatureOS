@@ -32,21 +32,6 @@ uint32_t kmalloc(uint32_t size, int align, uint32_t *phys_addr)
 	return ret;
 }
 
-void *kmemchr(uint8_t *source, char ch, int n)
-{
-	int i;int count = 0;
-	for (i = 0; i < n; i++) {
-		if (atoi(*(source + i)) == (int)ch)
-		{
-			count++;
-		}
-	}
-	if (count != n)
-	{
-		return NULL;
-	}
-}
-
 void kmemmove(uint8_t *source, uint8_t *dest, int pos, int nbytes)
 {
 	int i;

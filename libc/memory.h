@@ -5,6 +5,8 @@
 
 void kmemcpy(uint8_t *source, uint8_t *dest, int nbytes);
 void kmemset(uint8_t *dest, uint8_t val, uint32_t len);
+void kmemmove(uint8_t *source, uint8_t *dest, int pos, int nbytes);
+int kmemcmp(uint8_t *str1, uint8_t *str2, int nbytes);
 
 uint32_t kmalloc(uint32_t size, int align, uint32_t *phys_addr);
 
